@@ -14,7 +14,7 @@ You can download the git tool from [here](https://git-scm.com/).
 - Run the following command in command prompt to clone your forked repo locally :
 
   ```bash
-  $ git clone https://github.com/YOUR_GITHUB_USER_NAME/Algorithm-Visualizer.git
+  $ git clone https://github.com/YOUR_GITHUB_USER_NAME/Hotel_Management_System_Java.git
   ```
   where ```YOUR_GITHUB_USER_NAME``` is your GitHub username.
 
