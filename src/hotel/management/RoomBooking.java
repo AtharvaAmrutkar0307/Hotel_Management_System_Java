@@ -196,26 +196,22 @@ public class RoomBooking extends javax.swing.JFrame {
         pack();
     }
     
-    private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_buttonActionPerformed
-        // TODO add your handling code here:
+    private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new RoomList().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_back_buttonActionPerformed
+    }
 
-    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-        // TODO add your handling code here:
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new Login().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_logout_buttonActionPerformed
+    }
 
-    private void home_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home_buttonActionPerformed
-        // TODO add your handling code here:
+    private void home_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new MainScreen().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_home_buttonActionPerformed
+    }
     
-    private void book_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_book_buttonActionPerformed
-        // TODO add your handling code here:
+    private void book_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         if(f==0){
             JOptionPane.showMessageDialog(frame, "Please click the check button");
             return;
@@ -276,10 +272,9 @@ public class RoomBooking extends javax.swing.JFrame {
             System.out.println("Esception: "+e);
         }
         
-    }//GEN-LAST:event_book_buttonActionPerformed
+    }
 
-    private void check_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_buttonActionPerformed
-        // TODO add your handling code here:
+    private void check_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         String aadhar = adhaarf.getText();
         int l = aadhar.length();
         if(l!=12){
@@ -323,7 +318,7 @@ public class RoomBooking extends javax.swing.JFrame {
             f=1;
         else
             f=2;
-    }//GEN-LAST:event_check_buttonActionPerformed
+    }
 
     void setTextField(String room){
         roomf.setText(room);
@@ -376,5 +371,4 @@ public class RoomBooking extends javax.swing.JFrame {
     private javax.swing.JTextField namef;
     private javax.swing.JTextField nationf;
     private javax.swing.JTextField roomf;
-    // End of variables declaration//GEN-END:variables
 }

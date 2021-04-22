@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hotel.management;
 
 public class MainScreen extends javax.swing.JFrame {
@@ -143,38 +138,32 @@ public class MainScreen extends javax.swing.JFrame {
         pack();
     }
 
-    private void room_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room_buttonActionPerformed
-        // TODO add your handling code here:
+    private void room_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new RoomList().setVisible(true);
         this.setVisible(false);
     }
 
-    private void customer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customer_buttonActionPerformed
-        // TODO add your handling code here:
+    private void customer_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new CustomerList().setVisible(true);
         this.setVisible(false);
     }
 
-    private void staff_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_buttonActionPerformed
-        // TODO add your handling code here:
+    private void staff_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new StaffInfo().setVisible(true);
         this.setVisible(false);
     }
 
-    private void rest_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rest_buttonActionPerformed
-        // TODO add your handling code here:
+    private void rest_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new RestMenu().setVisible(true);
         this.setVisible(false);
     }
 
-    private void add_staff_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_staff_buttonActionPerformed
-        // TODO add your handling code here:
+    private void add_staff_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new AddStaff().setVisible(true);
         this.setVisible(false);
     }
 
-    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-        // TODO add your handling code here:
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new Login().setVisible(true);
         this.setVisible(false);
     }

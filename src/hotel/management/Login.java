@@ -227,7 +227,6 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
-    
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

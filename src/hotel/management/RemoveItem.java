@@ -91,8 +91,7 @@ public class RemoveItem extends javax.swing.JFrame {
         pack();
     }
 
-    private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_buttonActionPerformed
-        // TODO add your handling code here:
+    private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         String qname;
         qname=item_name.getText();
         
@@ -135,8 +134,7 @@ public class RemoveItem extends javax.swing.JFrame {
         
     }
 
-    private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_buttonActionPerformed
-        // TODO add your handling code here:
+    private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new RestMenu().setVisible(true);
         this.setVisible(false);
     }
@@ -161,7 +159,6 @@ public class RemoveItem extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RemoveItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

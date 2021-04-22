@@ -137,7 +137,7 @@ public class StaffInfo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_home_buttonActionPerformed
 
-    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         new Login().setVisible(true);
         this.setVisible(false);

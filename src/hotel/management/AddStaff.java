@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hotel.management;
 
 import java.awt.HeadlessException;
@@ -155,7 +150,7 @@ public class AddStaff extends javax.swing.JFrame {
     }
     
     private JFrame frame;
-    private void addstaff_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstaff_buttonActionPerformed
+    private void addstaff_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String name,contact,aadhar,usr,pass,work;
         name=namef.getText();
@@ -199,7 +194,7 @@ public class AddStaff extends javax.swing.JFrame {
         {
             System.out.println("Esception: "+e);
         }
-    }//GEN-LAST:event_addstaff_buttonActionPerformed
+    }
 
     private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {
         new MainScreen().setVisible(true);
