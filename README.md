@@ -21,7 +21,7 @@ You can download the git tool from [here](https://git-scm.com/).
 #### Add upstream
 - Run the following Command :
   ```bash
-  $ git remote add upstream https://github.com/AtharvaAmrutkar0307/Algorithm-Visualizer.git
+  $ git remote add upstream https://github.com/AtharvaAmrutkar0307/Hotel_Management_System_Java.git
   ```
 - Check if the upstream is working :
   ```bash
