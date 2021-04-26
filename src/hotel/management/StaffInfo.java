@@ -17,12 +17,16 @@ public class StaffInfo extends javax.swing.JFrame {
     public void showDetails(){
         DefaultTableModel model = (DefaultTableModel)table.getModel();  
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root",Credentials.sqlPassword);
+            if(con != null)
+            {
+          	  System.out.println("Connected in StaffInfo.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotelsystem;");
+            stmt.executeUpdate("USE hotel_management;");
             ResultSet rs=stmt.executeQuery("select * from staff;");
             while(rs.next()){
                 String name=rs.getString("name");

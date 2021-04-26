@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -192,7 +193,6 @@ public class RoomBooking extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
         pack();
     }
     
@@ -237,13 +237,17 @@ public class RoomBooking extends javax.swing.JFrame {
         Date date = new Date();
         long time = date.getTime();
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
-            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root","Msd??007");
+            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root","Msd??007");
+            if(con != null)
+            {
+            	System.out.println("Connected in Room-Booking.Time = " + time ++);
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotelsystem;");
-            ResultSet rs = stmt.executeQuery("select * from room where id="+room+";");
+            stmt.executeUpdate("USE hotel_management;");
+            ResultSet rs = stmt.executeQuery("SELECT * from room where id="+room+";");
             rs.next();
             int max = Integer.parseInt(rs.getString("capacity"));
             int occ = Integer.parseInt(rs.getString("occupied"));
@@ -257,10 +261,10 @@ public class RoomBooking extends javax.swing.JFrame {
                 return;
             }
             if(f==1){
-                stmt.executeUpdate("insert into customer values('"+aadhar+"','"+name+"','"+contact+"','"+address+"','"+nation+"');");
+                stmt.executeUpdate("INSERT into customer values('"+aadhar+"','"+name+"','"+contact+"','"+address+"','"+nation+"');");
             }
-            stmt.executeUpdate("insert into bookings(aadhar,number_of_persons,room,checkin) values('"+aadhar+"',"+inhab+","+room+",'"+time+"');");
-            stmt.executeUpdate("update room set occupied=1 where id="+room+";");
+            stmt.executeUpdate("INSERT into bookings(aadhar,number_of_persons,room,checkin) values('"+aadhar+"',"+inhab+","+room+",'"+time+"');");
+            stmt.executeUpdate("UPDATE room set occupied=1 where id="+room+";");
             JOptionPane.showMessageDialog(frame, "Room Booked");
             new CustomerList().setVisible(true);
             this.setVisible(false);
@@ -271,7 +275,6 @@ public class RoomBooking extends javax.swing.JFrame {
         {
             System.out.println("Esception: "+e);
         }
-        
     }
 
     private void check_buttonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,12 +291,16 @@ public class RoomBooking extends javax.swing.JFrame {
             }
         }
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
-            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root","Msd??007");
+            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root","Msd??007");
+            if(con != null)
+            {
+            	System.out.println("Connected in Room-Booking.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotelsystem;");
+            stmt.executeUpdate("use hotel_management;");
             namef.setText("");
             JOptionPane.showMessageDialog(frame, "Aadhar number verified");
             ResultSet rs=stmt.executeQuery("select * from customer where aadhar ='"+aadhar+"';");

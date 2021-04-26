@@ -178,14 +178,18 @@ public class AddStaff extends javax.swing.JFrame {
             }
         }
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root","Msd??007");
+            if(con != null)
+            {
+          	  System.out.println("Connected in AddStaff.");
+            }
             Statement stmt;
             stmt=con.createStatement();
             stmt.executeUpdate("USE hotel_management");
             System.out.println(""+name+contact+aadhar+usr+pass);
-            stmt.executeUpdate("insert into staff(name,contact,aadhar,username,password,work) values('"+name+"','"+contact+"','"+aadhar+"','"+usr+"','"+pass+"','"+work+"');");
+            stmt.executeUpdate("INSERT INTO staff(name,contact,aadhar,username,password,work) VALUES('"+name+"','"+contact+"','"+aadhar+"','"+usr+"','"+pass+"','"+work+"');");
             JOptionPane.showMessageDialog(frame, "Staff Added");
             new MainScreen().setVisible(true);
             this.setVisible(false);

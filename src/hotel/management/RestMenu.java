@@ -158,12 +158,12 @@ public class RestMenu extends javax.swing.JFrame {
     public void showDetails(){
         DefaultTableModel model = (DefaultTableModel)table.getModel();  
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root",Credentials.sqlPassword);
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotelsystem;");
+            stmt.executeUpdate("use hotel_management;");
             ResultSet rs=stmt.executeQuery("select * from restitem;");
             int count=1;
             while(rs.next()){

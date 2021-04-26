@@ -17,12 +17,16 @@ public class RoomList extends javax.swing.JFrame {
     public void showDetails(){
         DefaultTableModel model = (DefaultTableModel)table.getModel();  
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
-            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root","Msd??007");
+            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root","Msd??007");
+            if(con != null)
+            {
+          	  System.out.println("Connected in RoomList.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotel_management;");
+            stmt.executeUpdate("USE hotel_management;");
             ResultSet rs=stmt.executeQuery("select * from room where occupied = 0;");
             while(rs.next()){
                 String id=rs.getString("id");
@@ -32,6 +36,7 @@ public class RoomList extends javax.swing.JFrame {
                 
               model.addRow(new Object[]{id,beds,capacity,price});
             }
+            table.setModel(model);
             rs.close();  
             con.close();
             stmt.close();           

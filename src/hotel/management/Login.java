@@ -119,7 +119,7 @@ public class Login extends javax.swing.JFrame {
         user = username.getText();
         pass = new String(password.getPassword());
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root","Msd??007");
             Statement stmt;
@@ -156,12 +156,16 @@ public class Login extends javax.swing.JFrame {
     
     private void connectSQL(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_management", "root", "Msd??007");
+            if(con != null)
+            {
+          	  System.out.println("Connected in Login.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS hotelsystem;");
+            stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS hotel_management;");
             stmt.executeUpdate("USE hotel_management");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS staff (id int NOT NULL PRIMARY KEY auto_increment, name varchar(20) NOT NULL, contact varchar(20) NOT NULL, aadhar  varchar(20) NOT NULL, username  varchar(20) NOT NULL UNIQUE, password  varchar(20) NOT NULL, work  varchar(20) NOT NULL);");
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS customer (aadhar  varchar(20) PRIMARY KEY, name varchar(20) NOT NULL, contact varchar(20) NOT NULL,address varchar(30),nation varchar(30) );");
@@ -194,7 +198,7 @@ public class Login extends javax.swing.JFrame {
             }
             
         }
-        catch(  HeadlessException | ClassNotFoundException | NumberFormatException | SQLException e)
+        catch(HeadlessException | ClassNotFoundException | NumberFormatException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Exception" + e);
         }

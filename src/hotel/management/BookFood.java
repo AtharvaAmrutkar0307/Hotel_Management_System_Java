@@ -118,9 +118,13 @@ public class BookFood extends javax.swing.JFrame {
         
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
-            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root",Credentials.sqlPassword);
+            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root",Credentials.sqlPassword);
+            if(con != null)
+            {
+          	  System.out.println("Connected in BookFood.");
+            }
             Statement stmt;
             stmt=con.createStatement();
             stmt.executeUpdate("USE hotel_management");
@@ -163,12 +167,12 @@ public class BookFood extends javax.swing.JFrame {
                 int pr = Integer.parseInt(price);
          
                 rs2 = stmt.executeQuery("select * from bookings where room="+qroom+" and checkout is null;");
-                System.out.println("fck");
+                //System.out.println("fck");
                 rs2.next();
                 int prices = Integer.parseInt(rs2.getString("amount"));
                 String id = rs2.getString("id");
                 prices+=pr;
-                System.out.println("fck");
+                //System.out.println("fck");
                 stmt.executeUpdate("update bookings set amount="+prices+" where id="+id+";");
                 
                 JOptionPane.showMessageDialog(null, "Food Booked");

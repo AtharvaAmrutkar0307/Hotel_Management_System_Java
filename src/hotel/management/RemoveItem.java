@@ -25,8 +25,8 @@ public class RemoveItem extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        back_button.setFont(new java.awt.Font("Kristen ITC", 1, 12)); // NOI18N
-        back_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-go-back-32.png"))); // NOI18N
+        back_button.setFont(new java.awt.Font("Kristen ITC", 1, 12)); 
+        back_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-go-back-32.png"))); 
         back_button.setText("Back");
         back_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -36,7 +36,7 @@ public class RemoveItem extends javax.swing.JFrame {
 
         jLabel1.setText("Item Name");
 
-        remove_button.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); // NOI18N
+        remove_button.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 24)); 
         remove_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-fallen-ice-cream-cone-64.png"))); // NOI18N
         remove_button.setText("Remove Item");
         remove_button.addActionListener(new java.awt.event.ActionListener() {
@@ -100,9 +100,13 @@ public class RemoveItem extends javax.swing.JFrame {
             return;
         }
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root","Msd??007");
+            if(con != null)
+            {
+          	  System.out.println("Connected in RemoveItem.");
+            }
             Statement stmt;
             stmt=con.createStatement();
             stmt.executeUpdate("USE hotel_management");

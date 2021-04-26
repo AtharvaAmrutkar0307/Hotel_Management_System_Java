@@ -104,16 +104,13 @@ public class AddItem extends javax.swing.JFrame {
     }
 
     private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         new RestMenu().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_back_buttonActionPerformed
+    }
 
-    private void additem_buttonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        
+    private void additem_buttonActionPerformed(java.awt.event.ActionEvent evt) {  
         String qname,qprice;
-        qname=item_name.getText();
+        qname = item_name.getText();
         qprice = item_price.getText();
         if(qname.equals("")||qprice.equals("")){
             JOptionPane.showMessageDialog(null, "Please fill the details");
@@ -127,13 +124,17 @@ public class AddItem extends javax.swing.JFrame {
             }
         }
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root",Credentials.sqlPassword);
+            if(con != null)
+            {
+          	  System.out.println("Connected in AddItem.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("USE hotelsystem");
-            stmt.executeUpdate("insert into restitem(item_name,item_price) values('"+qname+"','"+qprice+"');");
+            stmt.executeUpdate("USE hotel_management");
+            stmt.executeUpdate("INSERT INTO restitem(item_name,item_price) VALUES('"+qname+"','"+qprice+"');");
             JOptionPane.showMessageDialog(null, "Item Added");
             new RestMenu().setVisible(true);
             this.setVisible(false);

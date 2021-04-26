@@ -19,12 +19,16 @@ public class CustomerList extends javax.swing.JFrame {
     public void showDetails(){
         DefaultTableModel model = (DefaultTableModel)table.getModel();  
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
             con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root",Credentials.sqlPassword);
+            if(con != null)
+            {
+            	System.out.println("Connected from Customer-List.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotel_management;");
+            stmt.executeUpdate("USE hotel_management;");
             ResultSet rs=stmt.executeQuery("select * from bookings b join customer c where b.aadhar = c.aadhar and b.checkout is null;");
             while(rs.next()){
                 String name=rs.getString("name");
@@ -35,6 +39,7 @@ public class CustomerList extends javax.swing.JFrame {
                 
               model.addRow(new Object[]{name,contact,aadhar,room,inhabitants});
             }
+            table.setModel(model);
             rs.close();  
             con.close();
             stmt.close();           
@@ -46,7 +51,8 @@ public class CustomerList extends javax.swing.JFrame {
         table.setModel(model);        
     }
 
-    private void initComponents() {
+    @SuppressWarnings("serial")
+	private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,7 +67,6 @@ public class CustomerList extends javax.swing.JFrame {
         table.setBackground(new java.awt.Color(255, 204, 204));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
                 "Customer Name", "Contact", "Adhaar Number", "Room number", "Inhabitants"
@@ -151,22 +156,24 @@ public class CustomerList extends javax.swing.JFrame {
     }
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
         int row = table.rowAtPoint(evt.getPoint());
         String room = (String) table.getValueAt(row, 3);
         String aadhar = (String) table.getValueAt(row, 2);
         
-        
         Date date = new Date();
         long time = date.getTime();
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con;
-            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/mysql","root",Credentials.sqlPassword);
+            con=DriverManager.getConnection("JDBC:mysql://localhost:3306/hotel_management","root",Credentials.sqlPassword);
+            if(con != null)
+            {
+          	  System.out.println("Connected in Bill_Generator.");
+            }
             Statement stmt;
             stmt=con.createStatement();
-            stmt.executeUpdate("use hotel_management;");
-            ResultSet rs=stmt.executeQuery("select * from bookings b join customer c where b.aadhar =c.aadhar and b.checkout is null and b.aadhar='"+aadhar+"';");
+            stmt.executeUpdate("USE hotel_management;");
+            ResultSet rs=stmt.executeQuery("SELECT * FROM bookings b join customer c where b.aadhar =c.aadhar and b.checkout is null and b.aadhar='"+aadhar+"';");
             rs.next();
             String id = rs.getString("id");
             String amount = rs.getString("amount");
